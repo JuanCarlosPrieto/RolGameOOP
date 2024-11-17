@@ -2,7 +2,7 @@
 #define OBJECT_H
 
 #include <string>
-#include "Usable.h"
+#include "../interfaces/Usable.h"
 
 class Object : public Usable {
 private:
@@ -15,7 +15,7 @@ public:
     // Constructor
     Object();
 
-    Object(const std::string& name, int type, int upgrade);
+    Object(const std::string& name, int type, int upgrade, int level);
 
     // Getters and Setters
     std::string getName() const;

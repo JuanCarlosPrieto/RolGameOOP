@@ -1,10 +1,11 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <iostream>
 #include <string>
 #include <vector>
-#include "Object.h"
-#include "Attack.h"
+#include "../atributes/Attack.h"
+#include "../atributes/Object.h"
 
 class Character {
 protected:
@@ -43,10 +44,10 @@ public:
     void setObjects(const std::vector<Object*>& objects);
 
     std::vector<Attack*> getAttacks() const;
-    void setAttacks(const std::vector<Attack*>& attacks);
+    void setAttacks(const std::vector<Attack*>& attacks);    
 
     // Overload operator
-    virtual Character& operator+(const Character& other) = 0; // Abstract method
+    virtual Character& operator+(const Character& other) = 0;    
     virtual ~Character() = default;
 };
 

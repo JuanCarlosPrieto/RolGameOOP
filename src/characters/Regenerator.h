@@ -16,6 +16,10 @@ public:
 
     int getMaxHealthRecovery() const;
     void setMaxHealthRecovery(int maxRecovery);
+
+    Regenerator& operator+(const Character& other) override;
 };
+
+std::ostream& operator<<(std::ostream& os, const Regenerator& character);
 
 #endif

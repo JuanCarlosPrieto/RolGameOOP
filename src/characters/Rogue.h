@@ -12,6 +12,10 @@ public:
 
     float getStealingChance() const;
     void setStealingChance(float chance);
+
+    Rogue& operator+(const Character& other) override;
 };
+
+std::ostream& operator<<(std::ostream& os, const Rogue& character);
 
 #endif

@@ -12,6 +12,10 @@ public:
 
     float getDamageMitigation() const;
     void setDamageMitigation(float mitigation);
+
+    Tank& operator+(const Character& other) override;
 };
+
+std::ostream& operator<<(std::ostream& os, const Tank& character);
 
 #endif

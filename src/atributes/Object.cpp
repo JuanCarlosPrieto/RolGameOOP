@@ -32,6 +32,6 @@ void Object::use(int amount, int target) {
 // Overload operator
 Object Object::operator+(const Object& other) {
     if (other.getName() == this->name && this->type == other.getType()) {
-        return Object()
+        return Object();
     }
 }

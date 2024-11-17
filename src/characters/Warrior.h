@@ -3,15 +3,19 @@
 
 #include "Character.h"
 
-class Tank : public Character {
+class Warrior : public Character {
 private:
     float criticalHitChance;
 
 public:
-    Tank(const std::string& name, int health, int attack, int defense, int speed, int magic, float hitChance);
+    Warrior(const std::string& name, int health, int attack, int defense, int speed, int magic, float hitChance);
 
     float getCriticalHitChance() const;
     void setCriticalHitChance(float hitChance);
+
+    Warrior& operator+(const Character& other) override;
 };
+
+std::ostream& operator<<(std::ostream& os, const Warrior& character);
 
 #endif
