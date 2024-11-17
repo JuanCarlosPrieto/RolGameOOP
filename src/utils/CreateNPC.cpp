@@ -151,6 +151,6 @@ Character* createNPC(int level) {
         std::vector<Object*> newObjects = {new Object(*npcObjects[num])};
         player->setObjects(newObjects);
     }
-
+    
     return player;
 }
