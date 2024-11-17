@@ -9,7 +9,8 @@
 
 void presentGame();
 std::vector<Object*> createObjects();
+std::vector<Object*> allObjects();
 Character* createPlayer();
-Character* createNPC();
+Character* createNPC(int level);
 
 #endif

@@ -3,7 +3,25 @@
 #include <random>
 #include <ctime>
 
-std::vector<Object*> generateObjects() {
+std::vector<Object*> allObjects() {
+    std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));
+
+    std::vector<std::pair<std::string,std::pair<int,int>>> objects = Ids::objectsAvailable;
+
+    sort(objects.begin(), objects.end(), [](std::pair<std::string,std::pair<int,int>> x, std::pair<std::string,std::pair<int,int>> y) {
+        return x.second.first < y.second.first;
+    });
+
+    std::vector<Object*> createdObjects;  
+
+    for (int i = 0; i < objects.size(); ++i) {
+        createdObjects.push_back(new Object(objects[i].first, objects[i].second.first, objects[i].second.second, 1));
+    }
+
+    return createdObjects;
+}
+
+std::vector<Object*> createObjects() {
     std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));    
 
     int countAttack = 0;
@@ -11,14 +29,14 @@ std::vector<Object*> generateObjects() {
     int countProtection = 0;
     int countWisdom = 0;
 
-    std::vector<std::tuple<std::string,int,int>> objects = Ids::objectsAvailable;
+    std::vector<std::pair<std::string,std::pair<int,int>>> objects = Ids::objectsAvailable;
 
-    sort(objects.begin(), objects.end(), [](std::tuple<std::string,int,int> x, std::tuple<std::string,int,int> y) {
-        return std::get<1>(x) < std::get<1>(y);
+    sort(objects.begin(), objects.end(), [](std::pair<std::string,std::pair<int,int>> x, std::pair<std::string,std::pair<int,int>> y) {
+        return x.second.first < y.second.first;
     });
 
     for (int i = 0; i < objects.size(); ++i) {
-        auto [name, type, upgrade] = objects[i];
+        int type = objects[i].second.first;
         if (type == Ids::ObjectTypes::ATTACK) countAttack++;
         else if (type == Ids::ObjectTypes::DEFENSE) countDefense++;
         else if (type == Ids::ObjectTypes::PROTECTION) countProtection++;
@@ -30,18 +48,18 @@ std::vector<Object*> generateObjects() {
     std::uniform_int_distribution<> protection(0, countProtection - 1);
     std::uniform_int_distribution<> wisdom(0, countWisdom - 1);
 
-    std::vector<Object*> generatedObjects;
+    std::vector<Object*> createdObjects;
     int idx = attack(gen);
-    generatedObjects.push_back(new Object(std::get<0>(objects[idx]), std::get<1>(objects[idx]), std::get<2>(objects[idx]), 1));
+    createdObjects.push_back(new Object(objects[idx].first, objects[idx].second.first, objects[idx].second.second, 1));
 
     idx = countAttack + defense(gen);
-    generatedObjects.push_back(new Object(std::get<0>(objects[idx]), std::get<1>(objects[idx]), std::get<2>(objects[idx]), 1));
+    createdObjects.push_back(new Object(objects[idx].first, objects[idx].second.first, objects[idx].second.second, 1));
 
     idx = countAttack + countDefense + protection(gen);
-    generatedObjects.push_back(new Object(std::get<0>(objects[idx]), std::get<1>(objects[idx]), std::get<2>(objects[idx]), 1));
+    createdObjects.push_back(new Object(objects[idx].first, objects[idx].second.first, objects[idx].second.second, 1));
 
     idx = countAttack + countDefense + countProtection + wisdom(gen);
-    generatedObjects.push_back(new Object(std::get<0>(objects[idx]), std::get<1>(objects[idx]), std::get<2>(objects[idx]), 1));
+    createdObjects.push_back(new Object(objects[idx].first, objects[idx].second.first, objects[idx].second.second, 1));
 
-    return generatedObjects;
+    return createdObjects;
 }

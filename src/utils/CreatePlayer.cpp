@@ -37,7 +37,7 @@ Character* createPlayer() {
         std::cout<<"Pillo: "<<Ids::CharacterTypes::ROGUE<<std::endl;
         std::cout<<"Tanque: "<<Ids::CharacterTypes::TANK<<std::endl;
         std::cout<<"Guerrero: "<<Ids::CharacterTypes::WARRIOR<<std::endl;
-        std::cout<<">"<<std::endl;
+        std::cout<<">";
     }
 
     if (characterType == Ids::CharacterTypes::REGENERATOR) {
@@ -51,6 +51,29 @@ Character* createPlayer() {
 
         std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
         std::cout<< *player <<std::endl;
+
+        std::vector<Object*> available = createObjects();
+        std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+        for (int i = 0; i < available.size(); ++i) {
+            std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+        }
+        std::cout<<">";
+
+        int choose;
+        std::cin>>choose;
+
+        while (choose < 1 || choose > 4) {
+            std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+            for (int i = 0; i < available.size(); ++i) {
+                std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+            }
+            std::cout<<">";
+            std::cin>>choose;
+        }
+
+        std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
+        player->setObjects(playerObjects);
+
         return player;
     }
     if (characterType == Ids::CharacterTypes::ROGUE) {
@@ -63,6 +86,29 @@ Character* createPlayer() {
 
         std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
         std::cout<< *player <<std::endl;
+
+        std::vector<Object*> available = createObjects();
+        std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+        for (int i = 0; i < available.size(); ++i) {
+            std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+        }
+        std::cout<<">";
+
+        int choose;
+        std::cin>>choose;
+
+        while (choose < 1 || choose > 4) {
+            std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+            for (int i = 0; i < available.size(); ++i) {
+                std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+            }
+            std::cout<<">";
+            std::cin>>choose;
+        }
+
+        std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
+        player->setObjects(playerObjects);
+
         return player;
     }
     if (characterType == Ids::CharacterTypes::TANK) {
@@ -75,8 +121,32 @@ Character* createPlayer() {
 
         std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
         std::cout<< *player <<std::endl;
+
+        std::vector<Object*> available = createObjects();
+        std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+        for (int i = 0; i < available.size(); ++i) {
+            std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+        }
+        std::cout<<">";
+
+        int choose;
+        std::cin>>choose;
+
+        while (choose < 1 || choose > 4) {
+            std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+            for (int i = 0; i < available.size(); ++i) {
+                std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+            }
+            std::cout<<">";
+            std::cin>>choose;
+        }
+
+        std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
+        player->setObjects(playerObjects);
+
         return player;
     }
+
     std::uniform_int_distribution<> attack(8, 12);
     std::uniform_int_distribution<> defense(2, 5);
     std::uniform_int_distribution<> speed(1, 5);
@@ -86,5 +156,28 @@ Character* createPlayer() {
 
     std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
     std::cout<< *player <<std::endl;
+
+    std::vector<Object*> available = createObjects();
+    std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+    for (int i = 0; i < available.size(); ++i) {
+        std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+    }
+    std::cout<<">";
+
+    int choose;
+    std::cin>>choose;
+
+    while (choose < 1 || choose > 4) {
+        std::cout<<"Ahora tienes que escoger uno de los siguientes objetos que te ayudaran en el desafio: "<<std::endl;
+        for (int i = 0; i < available.size(); ++i) {
+            std::cout<<i + 1<<". "<<available[i]->getName()<<std::endl;
+        }
+        std::cout<<">";
+        std::cin>>choose;
+    }
+
+    std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
+    player->setObjects(playerObjects);
+
     return player;
 }
