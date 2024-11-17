@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Warrior.h"
 
 Warrior::Warrior(const std::string& name, int health, int attack, int defense, int speed, int magic, float hitChance)
@@ -36,4 +37,5 @@ std::ostream& operator<<(std::ostream& os, const Warrior& character) {
         }
         os<<"]"<<std::endl;
     }
+    return os;
 }

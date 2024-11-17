@@ -1,7 +1,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include "../atributes/Attack.h"

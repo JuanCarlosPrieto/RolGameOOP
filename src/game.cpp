@@ -2,6 +2,7 @@
 #include "./utils/GameUtils.h"
 
 int main() {
-    createPlayer();
+    presentGame();
+    Character* player = createPlayer();
     return 0;
 }

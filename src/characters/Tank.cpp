@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Tank.h"
 
 Tank::Tank(const std::string& name, int health, int attack, int defense, int speed, int magic, float damageMitigation)
@@ -36,4 +37,5 @@ std::ostream& operator<<(std::ostream& os, const Tank& character) {
         }
         os<<"]"<<std::endl;
     }
+    return os;
 }

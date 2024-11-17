@@ -1,12 +1,11 @@
 #include "GameUtils.h"
 #include <iostream>
 #include <random>
+#include <algorithm>
+#include <ctime>
 
 Character* createPlayer() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-
-    
+    std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));    
 
     std::string username;
     int characterType;
@@ -26,7 +25,7 @@ Character* createPlayer() {
     std::cout<<"Pillo: "<<Ids::CharacterTypes::ROGUE<<std::endl;
     std::cout<<"Tanque: "<<Ids::CharacterTypes::TANK<<std::endl;
     std::cout<<"Guerrero: "<<Ids::CharacterTypes::WARRIOR<<std::endl;
-    std::cout<<">"<<std::endl;
+    std::cout<<">";
 
     std::cin>>characterType;
 
@@ -54,9 +53,9 @@ Character* createPlayer() {
         std::cout<< *player <<std::endl;
         return player;
     }
-    else if (characterType == Ids::CharacterTypes::ROGUE) {
-        std::uniform_int_distribution<> attack(5, 8);
-        std::uniform_int_distribution<> defense(1, 3);
+    if (characterType == Ids::CharacterTypes::ROGUE) {
+        std::uniform_int_distribution<> attack(5, 10);
+        std::uniform_int_distribution<> defense(2, 5);
         std::uniform_int_distribution<> speed(1, 5);
         std::uniform_real_distribution<> stealingChance(0, 1);
 
@@ -66,7 +65,7 @@ Character* createPlayer() {
         std::cout<< *player <<std::endl;
         return player;
     }
-    else if (characterType == Ids::CharacterTypes::TANK) {
+    if (characterType == Ids::CharacterTypes::TANK) {
         std::uniform_int_distribution<> attack(5, 8);
         std::uniform_int_distribution<> defense(2, 5);
         std::uniform_int_distribution<> speed(1, 5);
@@ -78,16 +77,14 @@ Character* createPlayer() {
         std::cout<< *player <<std::endl;
         return player;
     }
-    else if (characterType == Ids::CharacterTypes::WARRIOR) {
-        std::uniform_int_distribution<> attack(5, 8);
-        std::uniform_int_distribution<> defense(2, 5);
-        std::uniform_int_distribution<> speed(1, 5);
-        std::uniform_real_distribution<> hitChance(0, 1);
+    std::uniform_int_distribution<> attack(8, 12);
+    std::uniform_int_distribution<> defense(2, 5);
+    std::uniform_int_distribution<> speed(1, 5);
+    std::uniform_real_distribution<> hitChance(0, 1);
 
-        Warrior* player = CharacterFactory::createWarrior(username, 100, attack(gen), defense(gen), speed(gen), 0, hitChance(gen));
+    Warrior* player = CharacterFactory::createWarrior(username, 100, attack(gen), defense(gen), speed(gen), 0, hitChance(gen));
 
-        std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
-        std::cout<< *player <<std::endl;
-        return player;
-    }
+    std::cout<<"Estas son las estadisticas de tu personaje"<<std::endl;
+    std::cout<< *player <<std::endl;
+    return player;
 }

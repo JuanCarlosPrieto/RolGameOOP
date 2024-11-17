@@ -1,5 +1,5 @@
+#include <iostream>
 #include "Regenerator.h"
-#include <vector>
 
 Regenerator::Regenerator(const std::string& name, int health, int attack, int defense, int speed, int magic, float healthRecovery, int maxHealthRecovery)
     : Character(name, health, attack, defense, speed, magic), healthRecovery(healthRecovery), maxHealthRecovery(maxHealthRecovery) {}
@@ -40,4 +40,5 @@ std::ostream& operator<<(std::ostream& os, const Regenerator& character) {
         }
         os<<"]"<<std::endl;
     }
+    return os;
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Rogue.h"
 
 Rogue::Rogue(const std::string& name, int health, int attack, int defense, int speed, int magic, float stealingChance)
@@ -37,4 +38,5 @@ std::ostream& operator<<(std::ostream& os, const Rogue& character) {
         }
         os<<"]"<<std::endl;
     }
+    return os;
 }

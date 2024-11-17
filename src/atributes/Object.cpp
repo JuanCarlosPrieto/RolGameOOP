@@ -34,4 +34,5 @@ Object Object::operator+(const Object& other) {
     if (other.getName() == this->name && this->type == other.getType()) {
         return Object();
     }
+    return *this;
 }
