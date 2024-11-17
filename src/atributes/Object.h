@@ -9,9 +9,12 @@ private:
     std::string name;
     int type;
     int upgrade;
+    int level;
 
 public:
     // Constructor
+    Object();
+
     Object(const std::string& name, int type, int upgrade);
 
     // Getters and Setters
@@ -23,6 +26,9 @@ public:
 
     int getUpgrade() const;
     void setUpgrade(int upgrade);
+
+    int getLevel() const;
+    void setLevel(int level);
 
     // Usable methods
     void use(int amount) override;
