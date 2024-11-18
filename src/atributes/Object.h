@@ -36,6 +36,7 @@ public:
 
     // Overload operator
     Object operator+(const Object& other);
+    bool operator==(const Object& other);
 };
 
 #endif

@@ -36,3 +36,7 @@ Object Object::operator+(const Object& other) {
     }
     return *this;
 }
+
+bool Object::operator==(const Object& other) {
+    return this->name == other.getName();
+}

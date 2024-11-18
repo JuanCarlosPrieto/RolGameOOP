@@ -73,6 +73,7 @@ Character* createPlayer() {
 
         std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
         player->setObjects(playerObjects);
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
 
         return player;
     }
@@ -108,6 +109,7 @@ Character* createPlayer() {
 
         std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
         player->setObjects(playerObjects);
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
 
         return player;
     }
@@ -143,6 +145,7 @@ Character* createPlayer() {
 
         std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
         player->setObjects(playerObjects);
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
 
         return player;
     }
@@ -178,6 +181,7 @@ Character* createPlayer() {
 
     std::vector<Object*> playerObjects = {new Object(*available[choose - 1])};
     player->setObjects(playerObjects);
+    player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
 
     return player;
 }

@@ -45,6 +45,7 @@ Character* createNPC(int level) {
             player->setObjects(newObjects);
         }
 
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
         return player;
     }
     if (characterType == Ids::CharacterTypes::ROGUE) {
@@ -81,6 +82,7 @@ Character* createNPC(int level) {
             player->setObjects(newObjects);
         }
         
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
         return player;
     }
     if (characterType == Ids::CharacterTypes::TANK) {
@@ -117,6 +119,7 @@ Character* createNPC(int level) {
             player->setObjects(newObjects);
         }
 
+        player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));
         return player;
     }
     std::uniform_int_distribution<> attack(2 * level, 3* level);
@@ -151,6 +154,7 @@ Character* createNPC(int level) {
         std::vector<Object*> newObjects = {new Object(*npcObjects[num])};
         player->setObjects(newObjects);
     }
-    
+
+    player->setAttacks(setAttacksBasedOnObjects(player->getObjects()));   
     return player;
 }

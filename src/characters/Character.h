@@ -5,6 +5,7 @@
 #include <vector>
 #include "../atributes/Attack.h"
 #include "../atributes/Object.h"
+#include "../interfaces/Playable.h"
 
 class Character {
 protected:

@@ -2,8 +2,9 @@
 #define REGENERATOR_H
 
 #include "Character.h"
+#include "../interfaces/Playable.h"
 
-class Regenerator : public Character {
+class Regenerator : public Character, public Playable {
 private:
     float healthRecovery;
     int maxHealthRecovery;

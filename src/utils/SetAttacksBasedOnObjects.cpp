@@ -1,10 +1,10 @@
 #include "GameUtils.h"
-#include <map>
-#include <set>
+#include <unordered_map>
+#include <unordered_set>
 
 std::vector<Attack*> allAttacks() {
     std::vector<Object*> objects = allObjects();
-    std::map<std::string, Object*> mapObjects;
+    std::unordered_map<std::string, Object*> mapObjects;
     for (int i = 0; i < objects.size(); ++i) {
         mapObjects.insert({objects[i]->getName(), objects[i]});
     }
@@ -25,16 +25,17 @@ std::vector<Attack*> allAttacks() {
 std::vector<Attack*> setAttacksBasedOnObjects(std::vector<Object*> objects) {
     std::vector<Attack*> result;
     std::vector<Attack*> all_attacks = allAttacks();
-    std::set<Object> objectSet;
-
-    for (Object* ob : objects) {
-        objectSet.insert(*ob);
-    }
 
     for (int i = 0; i < all_attacks.size(); ++i)  {
         bool ok = 1;
         for (int j = 0; j < all_attacks[i]->getObjectsRequired().size(); ++j) {
-            if (objectSet.find(*(all_attacks[i]->getObjectsRequired()[j])) == objectSet.end()) {
+            bool contains = 0;
+            for (int k = 0; k < objects.size(); ++k) {
+                if (*objects[k] == *(all_attacks[i]->getObjectsRequired()[j])) {
+                    contains = 1;
+                }
+            }
+            if (!contains) {
                 ok = 0; 
                 break;
             }

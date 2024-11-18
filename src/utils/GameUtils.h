@@ -14,5 +14,6 @@ std::vector<Attack*> allAttacks();
 std::vector<Attack*> setAttacksBasedOnObjects(std::vector<Object*> objects);
 Character* createPlayer();
 Character* createNPC(int level);
+void play(Character* player1, Character* player2);
 
 #endif
