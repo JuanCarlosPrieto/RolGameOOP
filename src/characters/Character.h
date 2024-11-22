@@ -7,7 +7,7 @@
 #include "../atributes/Object.h"
 #include "../interfaces/Playable.h"
 
-class Character {
+class Character : public Playable {
 protected:
     std::string name;
     int health;
@@ -49,6 +49,9 @@ public:
     // Overload operator
     virtual Character& operator+(const Character& other) = 0;    
     virtual ~Character() = default;
+
+    int attack_func() override;
+    int defend_func(int damage_mit) override;
 };
 
 #endif

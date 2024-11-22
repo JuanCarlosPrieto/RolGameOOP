@@ -3,11 +3,8 @@
 
 class Playable {
 public:
-    virtual void attack() = 0;
-    virtual void defend(int) = 0;
-    virtual int heal(int) = 0;
-    virtual void takeDamage(int) = 0;
-    virtual ~Playable() = default;
+    virtual int attack_func() = 0;
+    virtual int defend_func(int) = 0;
 };
 
 #endif

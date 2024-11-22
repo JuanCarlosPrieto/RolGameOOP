@@ -17,7 +17,7 @@ Character* createNPC(int level) {
         std::uniform_int_distribution<> maxHealthRecovery(3 * level / 4, 7 * level / 4);
         std::uniform_real_distribution<> healthRecovery(0, 1);
 
-        Regenerator* player = CharacterFactory::createRegenerator(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), 0, healthRecovery(gen), maxHealthRecovery(gen));
+        Regenerator* player = CharacterFactory::createRegenerator(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), level, healthRecovery(gen), maxHealthRecovery(gen));
 
         std::uniform_int_distribution<> number(0, 3);
         if (level >= 8) {
@@ -54,7 +54,7 @@ Character* createNPC(int level) {
         std::uniform_int_distribution<> speed(level / 4, 5 * level / 4);
         std::uniform_real_distribution<> stealingChance(0, 1);
 
-        Rogue* player = CharacterFactory::createRogue(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), 0, stealingChance(gen));
+        Rogue* player = CharacterFactory::createRogue(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), level, stealingChance(gen));
 
         std::uniform_int_distribution<> number(0, 3);
         if (level >= 8) {
@@ -91,7 +91,7 @@ Character* createNPC(int level) {
         std::uniform_int_distribution<> speed(level / 4, 5 * level / 4);
         std::uniform_real_distribution<> mitigation(0, 1);
 
-        Tank* player = CharacterFactory::createTank(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), 0, mitigation(gen));
+        Tank* player = CharacterFactory::createTank(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), level, mitigation(gen));
 
         std::uniform_int_distribution<> number(0, 3);
         if (level >= 8) {
@@ -127,7 +127,7 @@ Character* createNPC(int level) {
     std::uniform_int_distribution<> speed(level / 4, 5 * level / 4);
     std::uniform_real_distribution<> hitChance(0, 1);
 
-    Warrior* player = CharacterFactory::createWarrior(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), 0, hitChance(gen));
+    Warrior* player = CharacterFactory::createWarrior(Ids::npcNames[names(gen)], 100, attack(gen), defense(gen), speed(gen), level, hitChance(gen));
 
     std::uniform_int_distribution<> number(0, 3);
     if (level >= 8) {

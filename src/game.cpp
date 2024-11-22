@@ -16,14 +16,18 @@ int main() {
         std::cin>>option;
         if (option == 1) {
             Character* npc = createNPC(level - 1);
+            play(player, npc);
         }
         else if (option == 2) {
             Character* npc = createNPC(level);
+            play(player, npc, level);
         }
         else {
             system("cls");
             std::cout<<"Selecciona una opcion valida!"<<std::endl;
         }
     }
+
+    std::cout<<"Bravo, terminaste el juego"<<std::endl;
     return 0;
 }

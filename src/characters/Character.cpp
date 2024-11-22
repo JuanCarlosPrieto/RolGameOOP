@@ -1,4 +1,6 @@
 #include "Character.h"
+#include <random>
+#include <ctime>
 
 // Constructor
 Character::Character(const std::string& name, int health, int attack, int defense, int speed, int magic)
@@ -28,3 +30,17 @@ void Character::setObjects(const std::vector<Object*>& objects) { this->objects 
 
 std::vector<Attack*> Character::getAttacks() const { return attacks; }
 void Character::setAttacks(const std::vector<Attack*>& attacks) { this->attacks = attacks; }
+
+int Character::attack_func() {
+    std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));
+    std::uniform_real_distribution<> factor(1, this->objects.size() + 2);
+
+    return this->attack * (this->magic / 10 + 1)* factor(gen) * 5;
+}
+
+int Character::defend_func(int damage_mit) {
+    std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));
+    std::uniform_real_distribution<> factor(0, damage_mit);
+
+    return this->attack * (this->magic / 10 + 1) * factor(gen);
+}

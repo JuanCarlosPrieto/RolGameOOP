@@ -9,7 +9,7 @@ void Tank::setDamageMitigation(float mitigation) { damageMitigation = mitigation
 
 Tank& Tank::operator+(const Character& other) {
     this->health = 100;
-    this->magic += other.getMagic();
+    this->magic += std::min(other.getMagic()/10, 1) + 1;
     return *this;
 }
 
